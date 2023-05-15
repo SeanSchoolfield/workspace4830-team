@@ -31,7 +31,11 @@ public class DisplayReadingList extends HttpServlet {
             "body{\n" + //
             "background: rgb(63,152,251);\n"
             + "background: linear-gradient(0deg, rgba(63,152,251,1) 29%, rgba(252,70,223,0.938813025210084) 92%);\n" + //
-            "}\n</style>\n" + //
+            "}" + //
+            "table{\n"
+            + "margin-left:auto;"
+            + "margin-right:auto;}"
+            + "\n</style>\n" + //
             "<head><title>" + title + "</title></head>\n" + //
             "<body>\n" + //
             "<h1 align = \"center\">" + title + "</h1>\n");
@@ -75,7 +79,8 @@ public class DisplayReadingList extends HttpServlet {
                 String reviews = rs.getString("Reviews");
                 out.println("<tr><td>" + bookTitle + "</td><td>" + author + "</td><td>" + genre + "</td><td>" + ISBN + "</td><td>" + summary + "</td><td>" + publisher + "</td><td>" + publishedYear + "</td><td>" + rate1 + "</td><td>" + reviews + "</td></tr>");
             }
-            out.println("</table></body></html>");
+            out.println("</table><br><button onclick=\"document.location='/final-project/Homepage.html'\">Return</button>");
+            out.println("</body></html>");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
