@@ -114,7 +114,8 @@ public class InsertBookDetails extends HttpServlet {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        out.println("Thank you for registering the book details");
+        out.println("<p text-align: center;>Thank you for registering the book details</p>");
+        out.println("<br><button onclick=\"document.location='/final-project/Homepage.html'\">Return</button>");
         out.println("</body></html>");
     }
 
