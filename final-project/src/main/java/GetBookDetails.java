@@ -57,11 +57,7 @@ public class GetBookDetails extends HttpServlet {
             "body{\n" + //
             "background: rgb(63,152,251);\n"
             + "background: linear-gradient(0deg, rgba(63,152,251,1) 29%, rgba(252,70,223,0.938813025210084) 92%);\n" + //
-            "}\n"
-            + "table{"
-            + "margin-left:auto;"
-            + "margin-right:auto;}"
-            + "</style>\n" + //
+            "}\n</style>\n" + //
             "<head><title>" + title + "</title></head>\n" + //
             "<body>\n" + //
             "<h1 align = \"center\">" + title + "</h1>\n");
@@ -86,41 +82,38 @@ public class GetBookDetails extends HttpServlet {
 
         sql = "SELECT * FROM bookTable WHERE Book_Title LIKE ? OR Author LIKE ? OR Genre LIKE ? OR ISBN LIKE ?";
         try {
-
             statement1 = connection.prepareStatement(sql);
             String wildcard = "%" + keyword + "%";
             statement1.setString(1, wildcard);
             statement1.setString(2, wildcard);
             statement1.setString(3, wildcard);
             statement1.setString(4, wildcard);
-        } catch (SQLException e2) {
-            // TODO Auto-generated catch block
-            e2.printStackTrace();
-        }
-
-        try {
 
             rs = statement1.executeQuery();
-        } catch (SQLException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        out.println("<table border=1 width=50% height=30%>");
-        out.println("<tr><th>BookTitle</th><th>AuthorName</th><th>Genre</th><th>ISBN</th><th>Summary</th></tr>");
-        try {
-            while (rs.next()) {
-                //Retrieve by column name
-            	String bookTitle = rs.getString("Book_Title");
-            	String author = rs.getString("Author");
-            	String genre = rs.getString("Genre");
-            	String ISBN = rs.getString("ISBN");
-            	String summary = rs.getString("Summary");
-                String publisher = rs.getString("Publisher");
-                String publishedYear = rs.getString("PublishedYear");
-                out.println("<tr><td>" + bookTitle + "</td><td>" + author + "</td><td>" + genre + "</td><td>" + ISBN + "</td><td>" + summary + "</td><td>" + publisher + "</td><td>" + publishedYear + "</td></tr>");
+
+            if (!rs.next()) {
+            	out.println("<div style='text-align:center; font-size:30px;'>Book not found!</div>");
+            } else {
+                out.println("<table border=1 width=50% height=30%>");
+                out.println("<tr><th>BookTitle</th><th>AuthorName</th><th>Genre</th><th>ISBN</th><th>Summary</th></tr>");
+
+                do {
+                    //Retrieve by column name
+                    String bookTitle = rs.getString("Book_Title");
+                    String author = rs.getString("Author");
+                    String genre = rs.getString("Genre");
+                    String ISBN = rs.getString("ISBN");
+                    String summary = rs.getString("Summary");
+                    String publisher = rs.getString("Publisher");
+                    String publishedYear = rs.getString("PublishedYear");
+                    out.println("<tr><td>" + bookTitle + "</td><td>" + author + "</td><td>" + genre + "</td><td>" + ISBN + "</td><td>" + summary + "</td><td>" + publisher + "</td><td>" + publishedYear + "</td></tr>");
+                } while (rs.next());
+
+                out.println("</table>");
             }
-            out.println("<br><button onclick=\"document.location='/final-project/Homepage.html'\">Return</button>");
+
             out.println("</body></html>");
+
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
