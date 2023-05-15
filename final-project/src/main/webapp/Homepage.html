@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Book Finder 5000</title>
+	<style>
+		body{
+		background: rgb(46,216,218);
+		background: linear-gradient(180deg, rgba(46,216,218,0.9164040616246498) 0%, rgba(238,237,231,1) 100%);	
+		}
+		.center-div{
+			margin: auto;
+			width: 90%;
+		}
+		header{
+		
+		width:100%;
+		margin: auto;
+		border: 2px solid black;
+		border-radius: 6px;
+		padding: 5px;
+		
+		}
+		h1{
+			margin: auto;
+			text-align: center;
+		}
+		h2{
+			margin: auto;
+			width: 95%;
+			padding: 4px;
+		}
+		form{
+			margin: auto;
+			padding:10px ;
+		}
+		input{
+			margin-left: auto;
+			margin-right: 10px;
+		}
+	</style>	
+</head>
+<body>
+<header>
+	<h1>BOOK FINDER 5000</h1>	
+</header>
+
+<div class="center-div">
+	<form action = "GetBookDetails" method="post">
+		<h3>Enter search keywords:</h3>
+		<input type="submit" value="Search">
+		<input type="text" name="keyword" placeholder="George R. R. Martin..." size="35">
+		
+	</form>
+</div>
+<br>
+<br>
+<h2>Register a Book</h2>
+<div class="center-div">
+	<form action="InsertBookDetails" method="post">
+		<h3>Enter book details here:</h3>
+		<label for="booktitle">Book Title:</label>
+		<input type="text" id="booktitle" name="booktitle" placeholder="Lord of the Rings..."/>
+		<label for="author">Author:</label>
+		<input type = "text" id="author" name="author" placeholder="J.R.R. Tolkien..." />
+		<label for="genre">Genre:</label>
+		<input type="text" id="genre" name="genre" placeholder="High Fantasy..." />
+		<label for="isbn">ISBN:</label>
+		<input type = "text" id="isbn" name="isbn"/><br>
+		<label for="summary">Summary:</label><br>
+		<textarea name="summary" rows="5" cols="35" placeholder="Summary goes here..."></textarea>
+		<p><input type="submit"/></p>
+	</form>
+</div>
+<h2>Rate and Review a Book</h2>
+<div class="center-div">
+	<form method="post" action="InsertRateandReviews">
+	<h3>Enter Rate and Review:</h3>
+		<label for="rate">Rating:</label>
+		<input type="number" id="rate" name="rate" step="0.1" min="0" max="5" placeholder="Enter rating (0-5)"/><br><br>
+		<label for="review">Review:</label><br>
+		<textarea id="review" name="review" rows="5" cols="35" placeholder="Enter your review"></textarea>
+		<h2>Enter search keywords:</h2>
+		<label for="keyword">Keyword:</label>
+		<input type="text" id="keyword" name="keyword" placeholder="Enter keyword">
+		<p><input type="submit"/></p>
+	</form>
+</div>
+<h2>Display Reading List</h2>
+<div class="center-div">
+  <form method="post" action="DisplayReadingList">
+    <h2>Click the button to display your reading list:</h2>
+    <button type="submit">Display Reading List</button>
+  </form>
+</div>
+</body>
+</html>
