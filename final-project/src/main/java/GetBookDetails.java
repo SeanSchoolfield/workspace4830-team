@@ -57,7 +57,11 @@ public class GetBookDetails extends HttpServlet {
             "body{\n" + //
             "background: rgb(63,152,251);\n"
             + "background: linear-gradient(0deg, rgba(63,152,251,1) 29%, rgba(252,70,223,0.938813025210084) 92%);\n" + //
-            "}\n</style>\n" + //
+            "}\n"
+            + "table{"
+            + "margin-left:auto;"
+            + "margin-right:auto;"
+            + "</style>\n" + //
             "<head><title>" + title + "</title></head>\n" + //
             "<body>\n" + //
             "<h1 align = \"center\">" + title + "</h1>\n");
@@ -111,7 +115,7 @@ public class GetBookDetails extends HttpServlet {
 
                 out.println("</table>");
             }
-
+            out.println("<br><button onclick=\"document.location='/final-project/Homepage.html'\">Return</button>");
             out.println("</body></html>");
 
         } catch (SQLException e) {
